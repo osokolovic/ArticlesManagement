@@ -1,20 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Jumbotron, Row, Col, Card, Button } from "react-bootstrap";
 
 import Article from "../components/Article/Article";
-import AddArticle from "../components/AddArticle/AddArticle";
-import { simulateHttpRequest, removeArticle } from "../store/actionCreators";
+import { removeArticle } from "../store/actionCreators";
 
-const Articles = ({ articles, saveArticle, removeArticle }) => (
-  <div>
-    <AddArticle saveArticle={saveArticle} />
-    {articles.map((article) => (
-      <>
-        <Article key={article.id} article={article} />
-        <button onClick={() => removeArticle(article)}>Remove</button>
-      </>
-    ))}
-  </div>
+const Articles = ({ articles, removeArticle }) => (
+  <Jumbotron>
+    <Row>
+      {articles.map((article) => (
+        <Col md={4} sm={4} key={article.id} style={{ marginBottom: "3%" }}>
+          <Card>
+            <Card.Body>
+              <Article article={article} />
+              <Button
+                className="float-right"
+                variant="danger"
+                onClick={() => removeArticle(article)}
+              >
+                Remove
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
+  </Jumbotron>
 );
 
 // this function is used to get our state from the redux store
@@ -34,7 +45,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     // before thunk, in dispatch argument we had addArticle
-    saveArticle: (article) => dispatch(simulateHttpRequest(article)),
     removeArticle: (article) => dispatch(removeArticle(article))
   };
 };

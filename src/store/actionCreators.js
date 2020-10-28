@@ -33,3 +33,10 @@ export const simulateHttpRequest = (article) => {
     }, 500);
   };
 };
+
+export const alterMessage = (message) => {
+  return {
+    type: actionTypes.CHANGE_MESSAGE,
+    message
+  };
+};
