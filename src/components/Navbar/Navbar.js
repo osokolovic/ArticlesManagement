@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "./Navbar.css";
@@ -9,12 +9,15 @@ const ArticleNavbar = () => {
     <Navbar bg="primary" variant="dark" className="Navbar">
       <Navbar.Brand href="/articles">Article Management</Navbar.Brand>
       <Nav className="mr-auto">
-        <Link to="/articles" className="Link">
+        <Nav.Link as={Link} to="/articles" className="Link">
           Show
-        </Link>
-        <Link to="/add" className="Link">
+        </Nav.Link>
+        <Nav.Link as={Link} to="/add" className="Link">
           Add
-        </Link>
+        </Nav.Link>
+        <Button as={Link} to="/test" variant="success">
+          Test
+        </Button>
       </Nav>
     </Navbar>
   );

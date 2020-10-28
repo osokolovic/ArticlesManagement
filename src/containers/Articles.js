@@ -9,7 +9,7 @@ const Articles = ({ articles, removeArticle }) => (
   <Jumbotron>
     <Row>
       {articles.map((article) => (
-        <Col md={4} sm={4} key={article.id} style={{ marginBottom: "3%" }}>
+        <Col md={4} sm={4} key={article.id} style={{ marginBottom: "0px" }}>
           <Card>
             <Card.Body>
               <Article article={article} />

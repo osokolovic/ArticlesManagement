@@ -9,17 +9,21 @@ import ArticleNavbar from "./components/Navbar/Navbar";
 import ItemMessage from "./components/ItemMessage/ItemMessage";
 import { simulateHttpRequest, alterMessage } from "./store/actionCreators";
 
+const Test = () => {
+  return <h2>This is test component</h2>;
+};
+
 const App = ({ saveArticle, message, alterMessage }) => {
   return (
     <Container fluid className="App">
       <Router>
         <Row>
-          <Col md={12}>
+          <Col sm={12} md={12}>
             <ArticleNavbar />
           </Col>
         </Row>
         <Row>
-          <Col md={12}>
+          <Col sm={12} md={12}>
             <Switch>
               <Route path="/articles">
                 <Articles />
@@ -29,6 +33,9 @@ const App = ({ saveArticle, message, alterMessage }) => {
                   saveArticle={saveArticle}
                   alterMessage={alterMessage}
                 />
+              </Route>
+              <Route path="/test">
+                <Test />
               </Route>
             </Switch>
           </Col>
