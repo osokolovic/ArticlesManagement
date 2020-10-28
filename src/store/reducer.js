@@ -23,6 +23,16 @@ const reducer = (state = initialState, action) => {
         articles: state.articles.concat(newArticle)
       };
 
+    case actionTypes.DELETE_ARTICLE:
+      const newArticles = state.articles.filter(
+        (article) => article.id !== action.article.id
+      );
+
+      return {
+        ...state,
+        articles: newArticles
+      };
+
     default:
       break;
   }

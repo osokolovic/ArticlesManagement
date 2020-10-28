@@ -13,6 +13,13 @@ export const addArticle = (article) => {
   };
 };
 
+export const removeArticle = (article) => {
+  return {
+    type: actionTypes.DELETE_ARTICLE,
+    article
+  };
+};
+
 // http reques simulation
 // reaceives article and returns a function
 // Due to thunk middleware, we can access to dispatch because our
@@ -23,6 +30,6 @@ export const simulateHttpRequest = (article) => {
   return (dispatch) => {
     setTimeout(() => {
       dispatch(addArticle(article));
-    }, 3000);
+    }, 500);
   };
 };

@@ -3,13 +3,16 @@ import { connect } from "react-redux";
 
 import Article from "../components/Article/Article";
 import AddArticle from "../components/AddArticle/AddArticle";
-import { simulateHttpRequest } from "../store/actionCreators";
+import { simulateHttpRequest, removeArticle } from "../store/actionCreators";
 
-const Articles = ({ articles, saveArticle }) => (
+const Articles = ({ articles, saveArticle, removeArticle }) => (
   <div>
     <AddArticle saveArticle={saveArticle} />
     {articles.map((article) => (
-      <Article key={article.id} article={article} />
+      <>
+        <Article key={article.id} article={article} />
+        <button onClick={() => removeArticle(article)}>Remove</button>
+      </>
     ))}
   </div>
 );
@@ -31,7 +34,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     // before thunk, in dispatch argument we had addArticle
-    saveArticle: (article) => dispatch(simulateHttpRequest(article))
+    saveArticle: (article) => dispatch(simulateHttpRequest(article)),
+    removeArticle: (article) => dispatch(removeArticle(article))
   };
 };
 
